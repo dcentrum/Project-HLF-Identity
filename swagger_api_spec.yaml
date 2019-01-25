@@ -1,0 +1,408 @@
+swagger: "2.0"
+info:
+  description: "This is an API spec for Identity management and background verification."
+  version: "1.0.0"
+  title: "Identity management and background verification"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost"
+basePath: "/v1"
+tags:
+- name: "Registration"
+  description: "Everything about registration apis"
+- name: "ManageExperienceDetails"
+  description: "Everything about managing experience details"
+- name: "ExperienceDetailsAccessManagement"
+  description: "Everything about managing access for experience details"
+schemes:
+- "https"
+- "http"
+
+paths:
+  /org:
+    post:
+      tags:
+      - "Registration"
+      summary: "register new employer"
+      description: ""
+      operationId: "registerEmployer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Employer Profile object"
+        required: true
+        schema:
+          $ref: "#/definitions/RegisterOrgProfileRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+  
+  /user:
+    post:
+      tags:
+      - "Registration"
+      summary: "register new user"
+      description: ""
+      operationId: "registerUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User  Profile object"
+        required: true
+        schema:
+          $ref: "#/definitions/RegisterUserProfileRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+  
+  /experienceDetails:
+    post:
+      tags:
+      - "ManageExperienceDetails"
+      summary: "add experience details"
+      description: ""
+      operationId: "addExperienceDetails"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Employee experience details object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddExperienceDetailsRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+        - "ManageExperienceDetails"
+      summary: "update experience details"
+      description: ""
+      operationId: "updateExperienceDetails"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Employee experience details object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateExperienceDetailsRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"         
+    
+    delete:
+      tags:
+        - "ManageExperienceDetails"
+      summary: "delete experience details"
+      description: ""
+      operationId: "deleteExperienceDetails"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "details to identify experience details uniquely"
+        required: true
+        schema:
+          $ref: "#/definitions/DeleteExperienceDetailsRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"         
+  
+  /approveExperienceDetails:
+    post:
+      tags:
+      - "ManageExperienceDetails"
+      summary: "approve experience details"
+      description: ""
+      operationId: "approveExperienceDetails"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Employee experience details object"
+        required: true
+        schema:
+          $ref: "#/definitions/ApproveExperienceDetailsRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+          
+
+
+  /rejectExperienceDetails:
+    post:
+      tags:
+      - "ManageExperienceDetails"
+      summary: "reject experience details"
+      description: ""
+      operationId: "rejectExperienceDetails"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Employee experience details object"
+        required: true
+        schema:
+          $ref: "#/definitions/RejectExperienceDetailsRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+
+  
+      
+  /requestToViewExpDetails:
+    post:
+      tags:
+      - "ExperienceDetailsAccessManagement"
+      summary: "Request To View Experience Details"
+      description: ""
+      operationId: "requestToViewExperienceDetails"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request To View Experience Details"
+        required: true
+        schema:
+          $ref: "#/definitions/RequestToViewExperienceDetailsRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+  
+  /approveExpDetailsViewRequest:
+    post:
+      tags:
+      - "ExperienceDetailsAccessManagement"
+      summary: "approve experience details view request"
+      description: ""
+      operationId: "approveExpDetailsViewRequest"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Approve Experience Details view request"
+        required: true
+        schema:
+          $ref: "#/definitions/ApproveExperienceDetailsViewRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+          
+  /rejectExpDetailsViewRequest:
+    post:
+      tags:
+      - "ExperienceDetailsAccessManagement"
+      summary: "reject experience details view request"
+      description: ""
+      operationId: "rejectExpDetailsViewRequest"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Reject Experience Details view request"
+        required: true
+        schema:
+          $ref: "#/definitions/RejectExperienceDetailsViewRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+          
+  
+  /revokeExpDetailsViewRequest:
+    post:
+      tags:
+      - "ExperienceDetailsAccessManagement"
+      summary: "revoke experience details view request"
+      description: ""
+      operationId: "revokeExpDetailsViewRequest"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Revoke Experience Details view request"
+        required: true
+        schema:
+          $ref: "#/definitions/RevokeExperienceDetailsViewRequest"
+      responses:
+        200:
+          description: "successfully submitted request"
+        405:
+          description: "Invalid input"
+    
+definitions:
+  RegisterOrgProfileRequest:
+    type: "object"
+    properties:
+      orgName:
+        type: "string"
+      orgPubKey:
+        type: "string"
+      orgMailId:
+        type: "string"
+        
+  RegisterUserProfileRequest:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      pubKey:
+        type: "string"
+      id:
+        type: "string"
+  
+  AddExperienceDetailsRequest:
+    type: "object"
+    properties:
+      empId:
+        type: "string"
+      orgName​:
+        type: "string"
+      orgPubkey​:
+        type: "string"
+      yearsOfExp​:
+        type: "string"
+      designation​​:
+        type: "string"
+      startDate​​​:
+        type: "string"
+        format: date-time
+      endDate​​​:
+        type: "string"
+        format: date-time
+      status:
+        type: "string"
+        
+  UpdateExperienceDetailsRequest:
+    type: "object"
+    properties:
+      expId:
+        type: "string"
+      orgPubkey​:
+        type: "string"
+      yearsOfExp​:
+        type: "string"
+      designation​​:
+        type: "string"
+      startDate​​​:
+        type: "string"
+        format: date-time
+      endDate​​​:
+        type: "string"
+        format: date-time
+      status:
+        type: "string"
+
+  
+  DeleteExperienceDetailsRequest:
+    type: "object"
+    properties:
+      expId​:
+        type: "string"
+
+  ApproveExperienceDetailsRequest:
+    type: "object"
+    properties:
+      expId​:
+        type: "string"
+  
+  RejectExperienceDetailsRequest:
+    type: "object"
+    properties:
+      expId​:
+        type: "string"
+  
+  RequestToViewExperienceDetailsRequest:
+    type: "object"
+    properties:
+      empId:
+        type: "string"
+      orgPubkey​:
+        type: "string"
+      orgName​:
+        type: "string"
+      startDate​​​:
+        type: "string"
+        format: date-time
+      endDate​​​:
+        type: "string"
+        format: date-time
+  
+  ApproveExperienceDetailsViewRequest:
+    type: "object"
+    properties:
+      requestId:
+        type: "string"
+
+  RejectExperienceDetailsViewRequest:
+    type: "object"
+    properties:
+      requestId:
+        type: "string"
+
+  RevokeExperienceDetailsViewRequest:
+    type: "object"
+    properties:
+      requestId:
+        type: "string"
